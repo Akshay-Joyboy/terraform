@@ -110,3 +110,71 @@ Summary:
     Clean up unused packages and caches.
 
 These steps will help ensure that all files and configurations related to Terraform and the HashiCorp repository are removed from your system. If you need more help or have any questions, just let me know!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+temp
+
+sudo apt-get install -y gnupg
+
+wget -O- https://apt.releases.hashicorp.com/gpg | \
+gpg --dearmor | \
+sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+
+
+
+Check /etc/apt/sources.list for the main repository list.
+Check /etc/apt/sources.list.d/ for additional repositories.
+
+
+If you want to completely remove Terraform and any associated configurations or repositories from your system, follow these steps:
+1. Uninstall Terraform
+
+First, remove Terraform using the package manager:
+
+bash
+
+sudo apt-get remove --purge terraform
+
+2. Remove the HashiCorp Repository
+
+Next, delete the repository you added:
+
+bash
+
+sudo rm /etc/apt/sources.list.d/hashicorp.list
+
+3. Remove the GPG Key
+
+If you added the GPG key for the HashiCorp repository, you can remove it as well:
+
+bash
+
+sudo rm /usr/share/keyrings/hashicorp-archive-keyring.gpg
+
+4. Clean Up
+
+To remove any unused packages and clean up cached files, you can run:
+
+bash
+
+sudo apt-get autoremove
+sudo apt-get clean
+
+Summary
+
+    Uninstall Terraform: sudo apt-get remove --purge terraform
+    Remove the repository: sudo rm /etc/apt/sources.list.d/hashicorp.list
+    Remove the GPG key: sudo rm /usr/share/keyrings/hashicorp-archive-keyring.gpg
+    Clean up: sudo apt-get autoremove and sudo apt-get clean
